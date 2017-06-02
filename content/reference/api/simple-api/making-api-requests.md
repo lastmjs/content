@@ -65,10 +65,21 @@ const client = new Lokka({
 
 Now you can use lokka to do queries and mutations. If you are unsure about the setup, check our [Todo example app using lokka](https://github.com/graphcool-examples/react-graphql/tree/master/quickstart-with-lokka-and-mobx). Find more information in the official [documentation](https://github.com/kadirahq/lokka/blob/master/README.md).
 
-## curl
+## HTTP and WebSockets
+
+### Queries and Mutations
 
 You can also communicate with the Simple API by using plain HTTP POST requests. For example, to query `allUsers`, do a POST request to your endpoint `https://api.graph.cool/simple/v1/__PROJECT_ID__`. With `curl` you could do:
 
 ```
 curl 'https://api.graph.cool/simple/v1/__PROJECT_ID__' -H 'content-type: application/json' --data-binary '{"query":"query {allUsers {id name}}"}' --compressed
 ```
+
+With `fetch` you could do:
+
+```
+```
+
+### Subscriptions
+
+Subscriptions are managed through WebSockets. To establish a subscription, 
