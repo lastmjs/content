@@ -189,3 +189,16 @@ const message = {
 ```
 
 You should receive a message with `type` set to `subscription_success`. When data changes occur, you will receive messages with `type` set to `subscription_data`. The `id` property that you supply in the `subscription_start` message will appear on all `subscription_data` messages, allowing you to multiplex your WebSocket connection.
+
+#### Unsubscribe from Data Changes
+
+To unsubscribe from data changes, send a message with the `type` property set to `subscription_end`:
+
+```
+const message = {
+    id: '1',
+    type: 'subscription_end'
+};
+
+webSocket.send(JSON.stringify(message));
+```
