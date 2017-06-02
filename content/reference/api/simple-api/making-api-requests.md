@@ -69,7 +69,9 @@ Now you can use lokka to do queries and mutations. If you are unsure about the s
 
 ### Queries and Mutations
 
-You can also communicate with the Simple API by using plain HTTP POST requests. For example, to query `allUsers`, do a POST request to your endpoint `https://api.graph.cool/simple/v1/__PROJECT_ID__`. With `curl` you could do:
+You can also communicate with the Simple API by using plain HTTP POST requests. For example, to query `allUsers`, do a POST request to your endpoint `https://api.graph.cool/simple/v1/__PROJECT_ID__`.
+
+With `curl` you could do:
 
 ```
 curl 'https://api.graph.cool/simple/v1/__PROJECT_ID__' -H 'content-type: application/json' --data-binary '{"query":"query {allUsers {id name}}"}' --compressed
@@ -78,6 +80,25 @@ curl 'https://api.graph.cool/simple/v1/__PROJECT_ID__' -H 'content-type: applica
 With `fetch` you could do:
 
 ```
+const response = await window.fetch('https://api.graph.cool/simple/v1/__PROJECT_ID__', {
+    method: 'post',
+    headers: {
+        'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+        query: `
+          query {
+            allUsers {
+              id
+              name
+            }
+          }
+        `
+    })
+});
+
+const responseJSON = await response.json();
+const data = responseJSON.data;
 ```
 
 ### Subscriptions
